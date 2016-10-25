@@ -9,4 +9,3 @@ define('modules/router', [], function() {
 require(["modules/ajax", "modules/router"], function(ajax, router) {
 	//..logic
 });
-define("main", function(){});

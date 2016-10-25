@@ -1,10 +1,4 @@
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
-var files = {};
-var port = 9000;
-
-var assets = function (req, res) {
+module.exports = function (req, res) {
 	var sendError = function (message, code) {
 		if(code===undefined) {
 			code = 404;
@@ -66,7 +60,4 @@ var assets = function (req, res) {
 	}
 
 	readFile(path.normalize(__dirname + req.url));
-}.1
-
-var app = http.createServer(assets).listen(port, '127.0.0.1');
-console.log("Listening on 127.0.0.1: " + port);
+}
