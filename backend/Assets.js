@@ -51,7 +51,7 @@ module.exports = function (req, res) {
 					return;
 				}
 				files[filePath] = {
-					ext: filePath.split(".")pop(),
+					ext: filePath.split(".").pop(),
 					content: data
 				};
 				serve(files[filePath]);
