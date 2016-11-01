@@ -1,6 +1,7 @@
 module.exports = function() {
 	return {
 		routes: [],
+		root: '/',
 		add: function(path, handler) {
 			if(typeof path == 'function') {
 				handler = path;
