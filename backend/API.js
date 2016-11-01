@@ -3,11 +3,11 @@ var response = function (result, res) {
 	res.end(JSON.stringify(result) + '\n');
 }
 
-var Router = require('../frontend/js/lib/router')();
+var Router = require('../frontend/js/lib/Router')();
 Router
 .add('api/version', function(req, res) {
 	response({
-		version: '0.1	'
+		version: '0.1'
 	}, res);
 })
 .add(function(req, res) {

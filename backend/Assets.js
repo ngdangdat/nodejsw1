@@ -1,9 +1,10 @@
+var fs = require('fs');
+var path = require('path');
+var files = {};
+
 module.exports = function (req, res) {
 	var sendError = function (message, code) {
-		if(code===undefined) {
-			code = 404;
-		}
-		res.writeHead(code, {'Content-Type': 'text/html'});
+		res.writeHead(code || 404, {'Content-Type': 'text/html'});
 		res.end(message);
 	}
 
@@ -37,8 +38,8 @@ module.exports = function (req, res) {
 			default:
 				contentType = "text/plain";
 		}
-		res.writeHead(200, {'Content-Type': contentType});s
-		res.end(file.content);
+		res.writeHead(200, {'Content-Type': contentType});
+		res.end(file.content + '\n');
 	}
 
 	var readFile = function (filePath) {
@@ -51,7 +52,7 @@ module.exports = function (req, res) {
 					return;
 				}
 				files[filePath] = {
-					ext: filePath.split(".").pop(),
+					ext: filePath.split(".").pop().toLowerCase(),
 					content: data
 				};
 				serve(files[filePath]);
@@ -59,5 +60,5 @@ module.exports = function (req, res) {
 		}
 	}
 
-	readFile(path.normalize(__dirname + req.url));
+	readFile(path.normalize(__dirname + '/..' + req.url));	
 }

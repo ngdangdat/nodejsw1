@@ -7,4 +7,4 @@ module.exports = Ractive.extend({
 	onrender: function() {
 		console.log('Home page rendered');
 	}
-})
+});

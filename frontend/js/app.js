@@ -2,7 +2,7 @@ var Router = require('./lib/Router')();
 var Home = require('./controllers/Home');
 var currentPage;
 var body;
-
+console.log('testing');
 var showPage = function(newPage) {
 	if(currentPage) { currentPage.teardown(); }
 	currentPage = newPage;
