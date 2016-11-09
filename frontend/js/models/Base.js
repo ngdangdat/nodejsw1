@@ -27,5 +27,55 @@ module.exports = Ractive.extend({
 			}, { init: false });
 		}
 		return this;
+	},
+	create: function(callback) {
+		var self = this;
+		ajax.request({
+			url: self.get('url'),
+			method: 'POST',
+			data: this.get('value'),
+			json: true
+		})
+		.done(function(result) {
+			if(callback){
+				callback(null, result);
+			}
+		})
+		.fail(function(xhr) {
+			if(callback) {
+				callback(JSON.parse(xhr.responseText));
+			}
+		});
+		return this;
+	},
+	save: function(callback) {
+		var self = this;
+		ajax.request({
+			url: self.get('url'),
+			method: 'PUT',
+			data: this.get('value'),
+			json: true
+		})
+		.done(function(result) {
+
+		})
+		.fail(function(xhr) {
+
+		})
+	},
+	del: function(callback) {
+		var self = this;
+		ajax.request({
+			url: self.get('url'),
+			method: 'DELETE',
+			json: true
+		})
+		.done(function(result) {
+
+		})
+		.fail(function(xhr) {
+
+		});
+		return this;
 	}
 })

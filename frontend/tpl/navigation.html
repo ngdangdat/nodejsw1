@@ -1,6 +1,12 @@
 <nav>
   <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Login</a></li>
+    <li><a click: goto('register'))>Home</a></li>
+    {{#if !isLogged }}
+      <li><a on-click="goto:register">Register</a></li>
+      <li><a on-click="goto:login">Login</a></li>
+    {{else}}
+      <li class="right"><a on-click="goto:logout">Logout</a></li>
+      <li class="right"><a on-click="goto:profile">Profile</a></li>
+    {{/if}}
   </ul>
 </nav>

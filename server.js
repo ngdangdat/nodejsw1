@@ -10,7 +10,16 @@ var Router = require('./frontend/js/lib/router')();
 Router
 .add('static', Assets)
 .add('api', API)
-.add(Default)
+.add(Default);
+
+var session = require('cookie-session');
+var checkSesssion = function (req, res) {
+	session({
+		keys: ['nodejs-by-example']
+	})(req, res, function() {
+		process(req, res);
+	});
+}
 
 var process = function(req, res) {
   Router.check(req.url, [req, res]);
